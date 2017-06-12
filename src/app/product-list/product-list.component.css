@@ -1,0 +1,8 @@
+.selected {
+    background-color: #CFD8DC !important;
+    color: white;
+  }
+  
+  .container .item{
+    cursor: pointer;
+  }

@@ -1,0 +1,25 @@
+
+<backet-list [products]="selectedProducts"></backet-list>
+<div class="container">
+  <h2>Products</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Category</th>
+         <th>isAvailable</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="item" *ngFor="let product of products" (click)="onSelect(product)" [class.selected]="isSelected(product)" >
+        <td>{{product.name}}</td>
+        <td>{{product.description}}</td>
+        <td>{{product.price}}</td>
+        <td>{{product.category}}</td>
+        <td>{{product.isAvailable}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
