@@ -2,33 +2,43 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule }   from '@angular/router';
 import { FormsModule }   from '@angular/forms';
+import { Router } from '@angular/router';
+import { HttpModule, JsonpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { ProductsService} from './products.service';
-import { ProductListComponent } from './product-list/product-list.component';
-import { BacketComponent } from './backet/backet.component';
+import { AppRoutingModule} from './app.routing.module';
+import { ProductsModule } from './products/products.module';
+import {CartModule} from './cart/cart.module';
+import { AdminModule } from './admin/admin.module';
+import { AuthGuard } from './guards/auth.guard';
+import { AuthService } from './services/auth.service';
+import { LoginComponent } from './components/.';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductListComponent,
-    BacketComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule ,
-    RouterModule.forRoot([
-    {
-      path: '',
-      redirectTo: '/products',
-      pathMatch: 'full'
-    },
-    {
-      path:'products',
-      component:ProductListComponent
-    }
-])],
-  providers: [ProductsService],
-  bootstrap: [AppComponent]
+    FormsModule,
+    AppRoutingModule,
+    HttpModule,
+    JsonpModule,
+    ProductsModule,
+    CartModule ,
+    AdminModule
+    ],
+  providers: [
+    AuthGuard,
+    AuthService
+  ],
+  bootstrap: [
+    AppComponent
+    ]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor(router:Router){
+    console.log('Routes: ', JSON.stringify(router.config, undefined, 2));
+  }
+}

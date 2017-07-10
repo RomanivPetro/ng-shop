@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-10 col-md-offset-1">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th></th>
+                        <th>Price</th>
+                        <th class="text-center">Category</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody >
+                  <tr product 
+                    *ngFor="let product of products" 
+                    [product]="product"
+                    (buy)="addToCart($event)">
+                  </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
